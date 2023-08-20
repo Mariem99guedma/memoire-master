@@ -9,11 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 import java.util.Map;
 
-@SpringBootApplication
+@SpringBootApplication (exclude = {DataSourceAutoConfiguration.class})
 public class AmazonBestSellingBooksApplication {
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(AmazonBestSellingBooksApplication.class, args);
