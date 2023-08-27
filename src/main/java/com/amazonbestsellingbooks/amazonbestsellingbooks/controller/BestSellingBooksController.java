@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/books")
@@ -16,15 +17,13 @@ public class BiographyController {
     @Autowired
     BooksService booksService;
 
-    @GetMapping("/")
-    public ResponseEntity<List<Book>> fetchListOfBooks(){
-        return new ResponseEntity<>(booksService.fetchListOfBooks(), HttpStatus.OK);
+    @GetMapping("/RankingOfTopBooks")
+    public ResponseEntity<List<Map<String, Object>>> fetchRankingOfTopBooks(){
+        return new ResponseEntity<>(booksService.fetchRankingOfTopBooks(), HttpStatus.OK);
     }
-
-
-    @GetMapping("/v2")
-    public ResponseEntity<List<Book>> fetchListOfBooks2(){
-        return new ResponseEntity<>(booksService.fetchListOfBooks2(), HttpStatus.OK);
+    @GetMapping("/MostReviewedBooks")
+    public ResponseEntity<List<Map<String, Object>>> fetchMostReviewedBooks(){
+        return new ResponseEntity<>(booksService.fetchMostReviewedBooks(), HttpStatus.OK);
     }
 
     @GetMapping("/author/{name}")
