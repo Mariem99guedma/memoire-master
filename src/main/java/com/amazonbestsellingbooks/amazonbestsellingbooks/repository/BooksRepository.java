@@ -17,10 +17,8 @@ public class BooksRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private final QueryHelper queryForObject;
-
 
     public List<Book> queryOne(){
-       return jdbcTemplate.queryForList(queryForObject.QUERY_ONE, Book.class);
+       return jdbcTemplate.queryForList(QueryHelper.QUERY_ONE, Book.class);
     }
 }
