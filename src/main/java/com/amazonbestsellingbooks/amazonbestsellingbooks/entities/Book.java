@@ -12,9 +12,6 @@ import java.time.Year;
 @Table(name="bestsellingbooks")
 public class Book {
 
-    @Id
-    Integer id;
-
     Year year;
 
     Integer rank;

@@ -1,12 +1,15 @@
 package com.amazonbestsellingbooks.amazonbestsellingbooks.repository;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class QueryHelper {
 
-    public final String QUERY_ONE = "SELECT Year, Rank, BookTitle AS Sales_Rank\n" +
-            "FROM (SELECT Year, Rank, BookTitle,\n" +
-            "ROW_NUMBER() OVER (PARTITION BY Year ORDER BY Rank ASC) AS Sales_Rank\n" +
-            "FROM bestsellingbooks)\n" +
-            "ranked_books\n" +
-            "WHERE Sales_Rank <= 5\n" +
-            "ORDER BY Year, Sales_Rank";
+    public final String QUERY_NUMBER_OF_COPIES_SOLD = "SELECT booktitle, COUNT(*) as nbr_copy_sold\n " +
+            "FROM BestSellingBooks\n " +
+            "GROUP BY booktitle\n " +
+            "ORDER by nbr_copy_sold DESC";
+    public final String QUERY_MOST_REVIEWED_BOOKS = "SELECT Year, BookTitle, Author ,Nbr_customers_reviews\n " +
+            "FROM bestsellingbooks\n " +
+            "ORDER BY Nbr_customers_reviews DESC";
 }

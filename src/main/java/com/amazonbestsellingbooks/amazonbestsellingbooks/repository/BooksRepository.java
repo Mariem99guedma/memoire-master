@@ -2,10 +2,8 @@ package com.amazonbestsellingbooks.amazonbestsellingbooks.repository;
 
 import com.amazonbestsellingbooks.amazonbestsellingbooks.entities.Book;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Map;
@@ -14,13 +12,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BooksRepository {
 
-
     private final JdbcTemplate jdbcTemplate;
 
     private final QueryHelper queryForObject;
 
-
-    public List<Book> queryOne(){
-       return jdbcTemplate.queryForList(queryForObject.QUERY_ONE, Book.class);
+    public List<Map<String, Object>> queryNumberOfCopiesSold(){
+       return jdbcTemplate.queryForList(queryForObject.QUERY_NUMBER_OF_COPIES_SOLD);
     }
+    public List<Map<String, Object>> queryMostReviewedBooks(){
+        return jdbcTemplate.queryForList(queryForObject.QUERY_MOST_REVIEWED_BOOKS);
+    }
+
 }
