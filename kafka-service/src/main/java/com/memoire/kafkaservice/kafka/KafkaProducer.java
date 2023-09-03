@@ -31,7 +31,7 @@ public class KafkaProducer {
         String id = UUID.randomUUID().toString();
 
 
-        ProducerRecord<Object, Object> record = new ProducerRecord<Object, Object>(KafkaUtils.topic,
+        ProducerRecord<Object, Object> record = new ProducerRecord<Object, Object>("Amazon-BestSellingBooks",
                 mapper.writeValueAsString(message));
 
         record.headers().add(KafkaUtils.HEADER_MESSAGE_TYPE, message.getClass().getSimpleName().getBytes());
